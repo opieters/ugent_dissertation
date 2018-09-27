@@ -20,7 +20,7 @@ Figure <a href="{{< ref "detector.md#figure-4.14" >}}">4.14</a> depicts the dete
 <figcaption>
 Figure 4.14: Detector architecture overview. Light signal is detected, amplified and filtered before it is converted into a digital signal at the ADC.
 </figcaption>
-</figure>
+![](){#fig:}
 
 # Power Budget Calculation
 
@@ -41,7 +41,7 @@ Here, $r=0.5mm$ and $w(z)=7.3mm$, resulting in: ${P = 0.0369P\_0}$ or a loss of 
 <figcaption>
 Figure 4.18: Expected attenuation of an optical system in a lens-based free space measurement with a path length $L$ of approximately 3.5m.
 </figcaption>
-</figure>
+![](){#fig:}
 
 The second and third set-ups are very similar. Both set-ups have the light wave interact using the evanescent field of the light wave on a photonic chip. Light does not directly propagate through the gas, but will propagate in a spiral waveguide and interact with surrounding gasses by means of the evanescent field. This principle and an example spiral structure for a glucose application is depicted in figure <a href="{{< ref "detector.md#figure-4.22" >}}">4.22</a> [<a href="{{< relref "#citation3" >}}">3</a>]. The main difference between both set-ups is how the signal is directed towards the PD. In the set-up from figure <a href="{{< ref "detector.md#figure-4.24" >}}">4.24</a>, the light is coupled into an optical fibre before falling onto the PD. This results in an additional loss due to inefficient coupling of light from the grating into the optical fibre. To avoid these losses, the PD can be placed directly above the grating, requiring a more complex vertical set-up and very good alignment between the grating and the photodetector. The overall losses with this last set-up (figure <a href="{{< ref "detector.md#figure-4.23" >}}">4.23</a>) vary between 16.4dB and 39dB compared to the set-up of figure <a href="{{< ref "detector.md#figure-4.24" >}}">4.24</a>, where losses range between 10.4dB and 29dB. A summary is provided in table <a href="{{< ref "detector.md#table-4.5" >}}">4.5</a>.
 
@@ -52,21 +52,21 @@ For all set-ups, we will use the same InGaAs PD from Hamamatsu. This is a broadb
 <figcaption>
 Figure 4.22: Working principle of on-chip measurement using the evanescent field and a spiral. Figure taken from [<a href="{{< relref "#citation3" >}}">3</a>].
 </figcaption>
-</figure>
+![](){#fig:}
 
 <figure id="figure-4.24">
 <img alt="detector:spiral_system_attenuation_2_gratings" src="/images/spiral_system_attenuation_2_gratings.svg">
 <figcaption>
 Figure 4.24: Expected attenuation of optical system in on-chip system 1: the signal is coupled into and out of the silicon chip using gratings, resulting in high loses. Additionally, there are losses inside the spiral. Only 20 to 80% of the signal interacts with air surrounding the spiral. This effectively attenuates the signal portion.
 </figcaption>
-</figure>
+![](){#fig:}
 
 <figure id="figure-4.23">
 <img alt="detector:spiral_system_attenuation_1_grating" src="/images/spiral_system_attenuation_1_grating.svg">
 <figcaption>
 Figure 4.23: Similar set-up as figure <a href="{{< ref "detector.md#figure-4.24" >}}">4.24</a>, but the  light coming out of the chip is not coupled into a fibre but falls directly on the PD. Very good alignment between PD and grating is required.
 </figcaption>
-</figure>
+![](){#fig:}
 
 <table id="table-4.5">
 <caption>Table 4.5: Optical loss overview in different set-ups.</caption>
@@ -111,23 +111,23 @@ The simulation model includes most components from the receiver chain. A schemat
 <figcaption>
 Figure 4.21: Overview of simulation components to compare different signal generation techniques.
 </figcaption>
-</figure>
+![](){#fig:}
 
-The output of this simulation is the ratio $R$ of the 2f component to the 1f component. An example simulation for an optical path length of 100cm and a CO<sub>2</sub> concentration of 410ppm is depicted in figure <a href="{{< ref "detector.md#figure-4.25" >}}">4.25</a>. The ideal $R$ ratio is completely computed using floating point values and with perfect input (i.e. no quantisation noise). The non-ideal $R$ ratio includes ADC conversion. During this simulation, a VGA is used to scale the signal to the optimal level (the maximum amplitude of the signal is equal to the reference voltage). To simulate a realistic setting, we remain 0.3V from the maximum ADC amplitude of 3.3V.
+The output of this simulation is the ratio $R$ of the 2f component to the 1f component. An example simulation for an optical path length of 100cm and a CO~2~ concentration of 410ppm is depicted in figure <a href="{{< ref "detector.md#figure-4.25" >}}">4.25</a>. The ideal $R$ ratio is completely computed using floating point values and with perfect input (i.e. no quantisation noise). The non-ideal $R$ ratio includes ADC conversion. During this simulation, a VGA is used to scale the signal to the optimal level (the maximum amplitude of the signal is equal to the reference voltage). To simulate a realistic setting, we remain 0.3V from the maximum ADC amplitude of 3.3V.
 
 <figure id="figure-4.25">
 <img alt="detector:typical_simulation" src="/images/typical_simulation.svg">
 <figcaption>
 Figure 4.25: Typical second order harmonic to the first order harmonic ratio at detector side (simulated). The ideal and actual $R$ ratios overlap, indicating that there is negligible influence of the ADC noise.
 </figcaption>
-</figure>
+![](){#fig:}
 
 <figure id="figure-4.26">
 <img alt="detector:typical_simulation_1f_2f" src="/images/typical_simulation_1f_2f.svg">
 <figcaption>
 Figure 4.26: 1f and 2f components used to obtain the actual ratio $R$ from figure <a href="{{< ref "detector.md#figure-4.25" >}}">4.25</a>.
 </figcaption>
-</figure>
+![](){#fig:}
 
 ## Required Resolution for Accurate Measurements
 
@@ -137,21 +137,21 @@ To simulate only the effect of the ADC, we will use noiseless components in the 
 
 In figure <a href="{{< ref "detector.md#figure-4.1" >}}">4.1</a> and figure <a href="{{< ref "detector.md#figure-4.2" >}}">4.2</a>, $R$ is the simulated ratio using a finite bit ADC (12bit and 16bit here). $R$ ideal on the other hand does not use an ADC and performs all computations using floating point arithmetic.
 
-From these figures, it is clear that the 16bit ADC has better performance for CO<sub>2</sub> concentrations that are one order in magnitude lower than ambient concentration of 410ppm. We will thus design a system with a 16bit ADC such that the ADC cannot form a limiting factor for accuracy. As a consequence, we will need to add a single-end to differential amplifier since most external ADC are differential.
+From these figures, it is clear that the 16bit ADC has better performance for CO~2~ concentrations that are one order in magnitude lower than ambient concentration of 410ppm. We will thus design a system with a 16bit ADC such that the ADC cannot form a limiting factor for accuracy. As a consequence, we will need to add a single-end to differential amplifier since most external ADC are differential.
 
 <figure id="figure-4.1">
 <img alt="detector:ADC_R_12_bit" src="/images/ADC_R_12_bit.svg">
 <figcaption>
 Figure 4.1: Second order harmonic to the first order harmonic ratio at detector side (simulated) for a 12bit ADC with background subtraction for a 30ppm concentration and a path length of 1cm.
 </figcaption>
-</figure>
+![](){#fig:}
 
 <figure id="figure-4.2">
 <img alt="detector:ADC_R_16_bit" src="/images/ADC_R_16_bit.svg">
 <figcaption>
 Figure 4.2: Second order harmonic to the first order harmonic ratio at detector side (simulated) for a 16bit ADC with background subtraction for a 30ppm concentration and a path length of 1cm.
 </figcaption>
-</figure>
+![](){#fig:}
 
 # Transimpedance Amplifier
 
@@ -168,7 +168,7 @@ In this subsection we will analyse the characteristics of the shunt-feedback res
 <figcaption>
 Figure 4.8: Simple TIA design. Final component values for $R\_\text{F}$ and $C\_\text{F}$ are listed in table <a href="{{< ref "detector.md#table-4.2" >}}">4.2</a>. The PD is modelled by its shunt resistance and terminal capacitance: $R\_\text{PD}=14kΩ$ and $C\_\text{PD}=500pF$.
 </figcaption>
-</figure>
+![](){#fig:}
 
 The TIA circuit must be stable, otherwise we cannot use it to amplify the current signal from the PD. Hereto, we will first consider a simple op-amp model with one pole and stabilise  this circuit. Afterwards we will focus on simulations to further optimise the feedback capacitance and verify the phase margin. 
 
@@ -218,7 +218,7 @@ Before selecting appropriate components for the circuit, we need to select an ap
 <figcaption>
 Figure 4.7: TIA amplifier selection using input referred noise current density versus bandwidth of the system [<a href="{{< relref "#citation5" >}}">5</a>, <a href="{{< relref "#citation6" >}}">6</a>, <a href="{{< relref "#citation7" >}}">7</a>].
 </figcaption>
-</figure>
+![](){#fig:}
 
 The following formula that estimates the input referred noise current density [<a href="{{< relref "#citation8" >}}">8</a>, <a href="{{< relref "#citation9" >}}">9</a>]:
 
@@ -277,7 +277,7 @@ A summary is provided in table <a href="{{< ref "detector.md#table-4.2" >}}">4.2
 <td>18</td>
 </tr>
 <tr>
-<td>>DFB CO<sub>2</sub></td>
+<td>>DFB CO~2~</td>
 <td>68</td>
 <td>33</td>
 </tr>
@@ -309,7 +309,7 @@ laser</th>
 <td>2.68</td>
 </tr>
 <tr>
-<td>>DFB CO<sub>2</sub></td>
+<td>>DFB CO~2~</td>
 <td>70.8</td>
 <td>61.4</td>
 <td>2.71</td>
@@ -330,7 +330,7 @@ The gain plot and input noise current density plots are depicted in figure <a hr
 <figcaption>
 Figure 4.9: Bode plot of the transfer function from TIA output to TIA input.
 </figcaption>
-</figure>
+![](){#fig:}
 
 The input noise current density is minimal for the two signals of interest, as observed in figure <a href="{{< ref "detector.md#figure-4.10" >}}">4.10</a> We can thus expect similar SNR degradation for both the 1f and 2f signals. Also notice that the input noise current density was estimated correctly in figure <a href="{{< ref "detector.md#figure-4.7" >}}">4.7</a> in our region of interest, indicating that the approximations made are valid.
 
@@ -339,7 +339,7 @@ The input noise current density is minimal for the two signals of interest, as o
 <figcaption>
 Figure 4.10: Voltage noise density at the output of the TIA.
 </figcaption>
-</figure>
+![](){#fig:}
 
 <h2 id="section-4.1">Filter Design
 
@@ -369,7 +369,7 @@ We will design a Butterworth filter. This filter has a maximally flat transfer f
 <figcaption>
 Figure 4.16: High-pass active Butterworth filter design using the Sallen-Key topology [<a href="{{< relref "#citation13" >}}">13</a>].
 </figcaption>
-</figure>
+![](){#fig:}
 
 We must also ensure that the input impedance of this circuit remains sufficiently high such that we do not overload the TIA. The input impedance is:
 
@@ -388,7 +388,7 @@ For low frequencies, equation <a href="{{< ref "detector.md#equation-4.1" >}}">4
 <figcaption>
 Figure 4.17: Input impedance of high-pass and low-pass Sallen-Key filters.
 </figcaption>
-</figure>
+![](){#fig:}
 
 We will use the OPA277 amplifier from Texas Instruments (TI) as operational amplifier together with the following component values from table <a href="{{< ref "detector.md#table-4.4" >}}">4.4</a>. The OPA277 was selected because it is a precision amplifier with low offset voltage (10μV at most), good phase margin (it is unity-gain stable) and low-noise operation [<a href="{{< relref "#citation10" >}}">10</a>]. These values result in a cut-off frequency of 1001.4Hz (this value is obtained from the simulation). 
 <table id="table-4.4">
@@ -423,14 +423,14 @@ We will use the OPA277 amplifier from Texas Instruments (TI) as operational ampl
 <figcaption>
 Figure 4.5: Bode magnitude plot of high-pass filter gain.
 </figcaption>
-</figure>
+![](){#fig:}
 
 <figure id="figure-4.6">
 <img alt="detector:LP_filter_gain" src="/images/LP_filter_gain.svg">
 <figcaption>
 Figure 4.6: Bode magnitude plot of low-pass filter gain.
 </figcaption>
-</figure>
+![](){#fig:}
 
 The stability of figure <a href="{{< ref "detector.md#figure-4.16" >}}">4.16</a> cannot be investigated simply by cutting the feedback at the inverting input clamp of the amplifier, since there is also positive feedback through $R\_1$. As a result, the GFT is applied in LTSpice. The GFT is a universal method that can be applied to any circuit [<a href="{{< relref "#citation14" >}}">14</a>, <a href="{{< relref "#citation15" >}}">15</a>]. The GFT simulation results indicate a phase margin specification of 63.0°.
 
@@ -455,7 +455,7 @@ $$
 <figcaption>
 Figure 4.19: Low-pass active Butterworth filter design using the Sallen-Key topology [<a href="{{< relref "#citation13" >}}">13</a>].
 </figcaption>
-</figure>
+![](){#fig:}
 
 We will opt to design a Butterworth filter, same as for the high-pass filter. This time with a cut-off frequency of 100kHz. The resulting component values are listed in table <a href="{{< ref "detector.md#table-4.4" >}}">4.4</a>. This cut-off frequency is too high to stop aliasing from occurring at frequencies between 40kHz and approximately 100kHz. However, selecting a lower value for the cut-off frequency results in attenuation of the second order harmonic, which is very undesirable since this signal is already very weak. Furthermore, it also results in a non-negligible gain mismatch between the first and second order harmonics. A higher-order filter structure where the roll-off is increased beyond 20kHz (but not at 20kHz) can solve this issue. However, required filter order will be higher, resulting in more power dissipation and complexity (several op-amps are needed for this).  
 
@@ -492,14 +492,14 @@ VGA exist as single package amplifiers that can be controlled directly using dig
 <figcaption>
 Figure 4.11: Simplified circuit of VGA design.
 </figcaption>
-</figure>
+![](){#fig:}
 
 <figure id="figure-4.20">
 <img alt="detector:noninterting_op_amp" src="/images/noninterting_op_amp.svg">
 <figcaption>
 Figure 4.20: Non-inverting op-amp circuit.
 </figcaption>
-</figure>
+![](){#fig:}
 
 The circuit in figure <a href="{{< ref "detector.md#figure-4.11" >}}">4.11</a> can be reduced to the non-inverting amplifier circuit from figure <a href="{{< ref "detector.md#figure-4.20" >}}">4.20</a>, where the two resistances have been split into several resistors with switches in between. By means of these switches, the resistive divider ratio from output to the negative amplifier clamp can be varied. This results in different levels of amplification. The amount of amplification is (the symbols refer to the resistance values in figure <a href="{{< ref "detector.md#figure-4.20" >}}">4.20</a>):
 
@@ -566,14 +566,14 @@ Due to the possibly large amplification, it is also important to have an idea on
 <figcaption>
 Figure 4.12: VGA gain plot from input to output.
 </figcaption>
-</figure>
+![](){#fig:}
 
 <figure id="figure-4.13">
 <img alt="detector:VGA_noise" src="/images/VGA_noise.svg">
 <figcaption>
 Figure 4.13: VGA input referred noise voltage density.
 </figcaption>
-</figure>
+![](){#fig:}
 
 # Analogue-to-Digital Converter Driver
 
@@ -594,7 +594,7 @@ If the output impedance of the previous stage (source impedance in this stage) i
 <figcaption>
 Figure 4.3: ADC driver for single-end to differential signal conversion.
 </figcaption>
-</figure>
+![](){#fig:}
 
 ## Circuit Performance
 
@@ -607,13 +607,13 @@ The open-loop phase margin of this circuit is 75.9°, which is more than suffici
 <figcaption>
 Figure 4.4: Bode magnitude plot of differential ADC driver gain.
 </figcaption>
-</figure>
+![](){#fig:}
 
 # Conclusion
 
 This chapter discussed the losses in the optical system in section <a href="{{< ref "detector.md#section-4.2" >}}">4.2</a>, looked at the amount of required bits and designed the different hardware blocks required in the detector. The photocurrent from the PD will be converted into a voltage signal using a TIA with optimal gain and bandwidth. The undesired DC and triangle signals are subsequently removed using an active high-pass filter. The signal is then further amplified using a digitally controlled VGA. Before sampling with a differential ADC, the signal is first low-pass filtered and converted to a differential signal.
 
-These different hardware blocks each have their own transfer function and associated gain. The overall transfer function of the detector is depicted in figure <a href="{{< ref "detector.md#figure-4.15" >}}">4.15</a> for the CO<sub>2</sub> >DFB laser and a VGA configuration of unity gain.
+These different hardware blocks each have their own transfer function and associated gain. The overall transfer function of the detector is depicted in figure <a href="{{< ref "detector.md#figure-4.15" >}}">4.15</a> for the CO~2~ >DFB laser and a VGA configuration of unity gain.
 
 From this transfer function, we can conclude that the detector has the expected gain of 96.56dBΩ and 96.33dBΩ for the 1f and 2f components respectively. These values are very close to the ideal value of 68kΩ or 96.65dBΩ. Additionally, the gain offset between both components is very small (less than 0.5dB).
 
@@ -624,4 +624,4 @@ The bandwidth of this transfer function is also not too small such that we can s
 <figcaption>
 Figure 4.15: Bode magnitude plot of the entire transfer function from the PD photocurrent to the ADC input after the single-ended to differential converter.
 </figcaption>
-</figure>
+![](){#fig:}

@@ -11,14 +11,9 @@ tags: ["one", "two"]
 chapter: A2
 ---
 
-
-
-
-
 In this chapter, we list the most important sections of the code code. Some explanations are also provided to make the operations more clear.
 
-<h2>Digital LIA Implementations for First and Second Order Harmonic Signals</h2> 
-
+# Digital LIA Implementations for First and Second Order Harmonic Signals#  
 
 ```assembly
 ; include common definitions
@@ -158,10 +153,9 @@ _end_lia_1f:
 
 ```
 
-
 The following license agreement applied to the `_quadratureMult` function:
 
-```
+```plain
 /* SOFTWARE LICENSE AGREEMENT:
 * Microchip Technology Incorporated ("Microchip") retains all ownership 
 * and intellectual property rights in the code accompanying this message 
@@ -201,9 +195,3 @@ This applies to the following files:
 * dspcommon.inc
 * foldedFIR.s
 ```
-
-
-
-
-<ul>
-</ul>

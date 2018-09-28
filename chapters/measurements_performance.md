@@ -33,9 +33,9 @@ The signal source of our system is the DAC, so accurate signal generation is imp
 
 The triangle wave signal has a period of 100ms. The period is annotated for visual inspection on the figure. This period corresponds to the desired frequency of 10Hz.
 
-We can observe several imperfections of the DAC circuit. Sometimes we observe that there is no transition. This is due to resistor variation. The resistors use have an error of 1%, resulting in an error of about \pm 1LSB. In the annotated transition, the signal transitions from an output of \lstinline|011111| to \lstinline|100000|. The MSB (the left bit) has the highest error, and in this realisation there is no transition observable due to these errors. 
+We can observe several imperfections of the DAC circuit. Sometimes we observe that there is no transition. This is due to resistor variation. The resistors use have an error of 1%, resulting in an error of about \pm 1LSB. In the annotated transition, the signal transitions from an output of `1011111` to `100000`. The MSB (the left bit) has the highest error, and in this realisation there is no transition observable due to these errors. 
 
-Another effect of imperfect resistor values is reduced amplitude variations. During the transition from \lstinline|001111| to \lstinline|010000|, we observe a step size that is too small. Again, this is due to deviating resistor values. 
+Another effect of imperfect resistor values is reduced amplitude variations. During the transition from `001111` to `010000`, we observe a step size that is too small. Again, this is due to deviating resistor values. 
 
 The overall voltage swing between minimum and maximum value is not 3.3V as assumed during simulation, but approximately 3V. This is however well between the tolerances of the voltages of the digital <abbr title="Input/Output">IO-pins [<a href="{{< relref "#citation1" >}}">1</a>]. The resulting current swing will thus be 10% smaller, resulting in a smaller wavelength swing. However, we will still be able to scan over the absorption line.
 

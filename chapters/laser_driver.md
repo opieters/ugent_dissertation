@@ -19,19 +19,9 @@ Prior to starting the laser driver design architecture, absorption peaks need to
 
 Do note that in table <a href="{{< ref "laser_driver.md#table-3.2" >}}">3.2</a>, the specifications of three different laser devices are summarised. Two of these can be used for CO~2~ concentration measurements and the array of DFB lasers can be used for the CO concentration measurements.
 
-<figure id="figure-3.5">
-<img alt="laser_driver:absorption_coefficient_CO_2" src="/images/absorption_coefficient_CO_2.svg">
-<figcaption>
-Figure 3.5: Absorption peaks of CO~2~ between 1990nm and 2040nm at 296K for a 100% CO~2~ concentration at 1atm [<a href="{{< relref "#citation3" >}}">3</a>].
-</figcaption>
-![](){#fig:}
+![Absorption peaks of CO~2~ between 1990nm and 2040nm at 296K for a 100% CO~2~ concentration at 1atm [<a href="{{< relref "#citation3" >}}">3</a>].](/images/absorption_coefficient_CO_2.svg){#fig:laser_driver:absorption_coefficient_CO_2}
 
-<figure id="figure-3.4">
-<img alt="laser_driver:absorption_coefficient_CO" src="/images/absorption_coefficient_CO.svg">
-<figcaption>
-Figure 3.4: Absorption peaks of CO between 1990nm and 2040nm at 296K for a 100% CO concentration at 1atm [<a href="{{< relref "#citation3" >}}">3</a>].
-</figcaption>
-![](){#fig:}
+![Absorption peaks of CO between 1990nm and 2040nm at 296K for a 100% CO concentration at 1atm [<a href="{{< relref "#citation3" >}}">3</a>].](/images/absorption_coefficient_CO.svg){#fig:laser_driver:absorption_coefficient_CO}
 
 <table id="table-3.2">
 <caption>Table 3.2: Laser specifications for CO and CO~2~ concentration measurements [<a href="{{< relref "#citation2" >}}">2</a>, <a href="{{< relref "#citation1" >}}">1</a>].</caption>
@@ -125,19 +115,9 @@ After computation of each of these FOM (the laser is assumed to operate at 25C),
 
 This DFB laser is very sensitive to temperature variations (see table <a href="{{< ref "laser_driver.md#table-3.2" >}}">3.2</a>), as a consequence, the TEC will need to set the correct biasing point since the wavelength variation by means of current variation is limited. A TEC controller keeps the laser temperature fixed by either cooling it or heating it up by means of a current. This temperature is usually set by reading the value of a thermistor. The TEC should be tuned such that it keeps the lasers temperature around the biasing point. However, it must not attempt to settle on any of the modulations we will use in the driver (see chapter <a href="{{< ref "laser_driver.md#chapter-3.1" >}}">3.1</a>). These modulations will vary the input current. As a result, the laser temperature will also vary, but on average it should maintain the same temperature, set by selecting an appropriate thermistor value. If the TEC is too fast (i.e. follows part of these modulations), then it will try to compensate for this slight variation in temperature. As a result, the wavelength modulation amplitude will be smaller.
 
-<figure id="figure-3.17">
-<img alt="laser_drivier:CO_2_absorption_peak_selection" src="/images/CO_2_absorption_peak_selection.svg">
-<figcaption>
-Figure 3.17: Wavelength vs. output power of the VCSEL, $\alpha\_\text{H~2~O}$ (left axis) and absorption coefficient of CO~2~ and H2O (right axis).
-</figcaption>
-![](){#fig:}
+![Wavelength vs. output power of the VCSEL, $\alpha\_\text{H~2~O}$ (left axis) and absorption coefficient of CO~2~ and H2O (right axis).](/images/CO_2_absorption_peak_selection.svg){#fig:laser_drivier:CO_2_absorption_peak_selection}
 
-<figure id="figure-3.18">
-<img alt="laser_drivier:FOM_CO_2" src="/images/FOM_CO_2.svg">
-<figcaption>
-Figure 3.18: FOM (left axis) for the different absorption peaks in the VCSEL wavelength range. The absorption coefficient (right axis) is also plotted for convenience.
-</figcaption>
-![](){#fig:}
+![FOM (left axis) for the different absorption peaks in the VCSEL wavelength range. The absorption coefficient (right axis) is also plotted for convenience.](/images/FOM_CO_2.svg){#fig:laser_drivier:FOM_CO_2}
 
 The most important properties of the selected peak values are listed in table <a href="{{< ref "laser_driver.md#table-3.3" >}}">3.3</a>.
 
@@ -145,12 +125,7 @@ The most important properties of the selected peak values are listed in table <a
 
 In the case of CO, the spacing between different absorption peaks is larger (figure <a href="{{< ref "laser_driver.md#figure-3.4" >}}">3.4</a>). Additionally, the tuning range for amount of current tuning is much lower compared to the VCSEL (table <a href="{{< ref "laser_driver.md#table-3.2" >}}">3.2</a>). The DFB lasers available are designed by Ruijun Wang of the Photonics Research Group, Ghent University-imec [<a href="{{< relref "#citation2" >}}">2</a>]. Several devices are available, two of them are depicted in figure <a href="{{< ref "laser_driver.md#figure-3.2" >}}">3.2</a>. 
 
-<figure id="figure-3.2">
-<img alt="laser_driver:CO_laser_abs_cmp" src="/images/CO_laser_abs_cmp.svg">
-<figcaption>
-Figure 3.2: Spectra of 2 in-house DFB lasers superimposed on the CO absorption spectrum.
-</figcaption>
-![](){#fig:}
+![Spectra of 2 in-house DFB lasers superimposed on the CO absorption spectrum.](/images/CO_laser_abs_cmp.svg){#fig:laser_driver:CO_laser_abs_cmp}
 
 From figure <a href="{{< ref "laser_driver.md#figure-3.2" >}}">3.2</a>, we see that the 2324nm DFB laser at 5C is most favourable because it completely covers the strong absorption line. Additionally, the absorption line is in a stable region for laser operation.
 
@@ -184,14 +159,9 @@ From figure <a href="{{< ref "laser_driver.md#figure-3.2" >}}">3.2</a>, we see t
 
 For the selected absorption peak, there is no issue with absorption by water due to the absence of strong H2O peaks. However, if large concentrations of CH4 are present, a different peak needs to be selected. This does not form a problem for measurements in free space, because the concentration of methane is much lower than that of CO [<a href="{{< relref "#citation4" >}}">4</a>].
 
-<figure id="figure-3.1">
-<img alt="laser_driver:CO_DFB_drive" src="/images/CO_DFB_drive.svg">
-<figcaption>
-Figure 3.1: Relationship between current and wavelength for CO DFB laser (left axis) (2324nm laser at 5C). The absorption coefficient of CO is also depicted (right axis).
-</figcaption>
-![](){#fig:}
+![Relationship between current and wavelength for CO DFB laser (left axis) (2324nm laser at 5C). The absorption coefficient of CO is also depicted (right axis).](/images/CO_DFB_drive.svg){#fig:laser_driver:CO_DFB_drive}
 
-The input current-output wavelength relationship of the selected DFB laser is depicted in figure <a href="{{< ref "laser_driver.md#figure-3.1" >}}">3.1</a>. The operating region is defined as the wavelength region where the output power is at least -30dBm. Table <a href="{{< ref "laser_driver.md#table-3.3" >}}">3.3</a> summarises the the most important characteristics of the absorption peaks. Using these and the current-wavelength relationships for the different lasers, we can define the amplitudes of the different signals in the next section. 
+The input current-output wavelength relationship of the selected DFB laser is depicted in figure <a href="{{< ref "laser_driver.md#figure-3.1" >}}">3.1</a>. The operating region is defined as the wavelength region where the output power is at least -30dBm. Table <a href="{{< ref "laser_driver.md#table-3.3" >}}">3.3</a> summarises the the most important characteristics of the absorption peaks. Using these and the current-wavelength relationships for the different lasers, we can define the amplitudes of the different signals in the next section.
 
 # Input Current Signals
 
@@ -217,12 +187,7 @@ A modulation index $m$ of 2.2 results in maximal amplitude of the second order h
 
 The difference between the simulated optimal modulation index and the one reported in literature is due to the nature of the simulation: this was performed using the actual absorption coefficient of CO~2~ at the 2003.5nm absorption line and not an ideal isolated peak. Many weaker absorption peaks are present as is visible in figure <a href="{{< ref "laser_driver.md#figure-3.17" >}}">3.17</a> (this is well visible around the 2005.64nm peak).
 
-<figure id="figure-3.12">
-<img alt="laser_driver:optimal_modulation_index" src="/images/optimal_modulation_index.svg">
-<figcaption>
-Figure 3.12: Normalised second order harmonic peak value for different modulation indices $m$ for the selected CO~2~ peak at 2003.5nm.
-</figcaption>
-![](){#fig:}
+![Normalised second order harmonic peak value for different modulation indices $m$ for the selected CO~2~ peak at 2003.5nm.](/images/optimal_modulation_index.svg){#fig:laser_driver:optimal_modulation_index}
 
 With the information above, we can determine the needed amplitudes for the different lasers using the characteristics of the selected absorption peaks. We will provide full calculations for the VCSEL laser. Similar reasonings are valid for the other lasers. A summary of the different amplitudes is provided in table <a href="{{< ref "laser_driver.md#table-3.5" >}}">3.5</a>.
 
@@ -259,7 +224,6 @@ laser</th>
 </tr>
 </table>
 
-
 Do note that the amplitudes in table <a href="{{< ref "laser_driver.md#table-3.5" >}}">3.5</a> are _not_ peak-to-peak values. For example, the sine wave for the CO DFB laser will thus vary between -9.277mA and 9.277mA (relative to the bias value). 
 
 Before starting the design of the signal generators, we need to fix the frequencies of the different signals. The frequencies are selected as follows: the line scanning triangle signal will vary at 10Hz and the sine wave at 10kHz. These values were co-designed with the TIA such that the TIA bandwidth is optimally used. These frequencies are spaced sufficiently far apart for easy removal of the triangle wave. Additionally, both frequencies are not too high such that we can easily generate them using a dedicated circuit. The sine-wave should also escape the $1/f$ noise for most circuits. The main disadvantage of these values is the need for active filtering because component values become too large for passive filtering with a low cut-off frequency; especially higher order filtering becomes difficult. Furthermore, increasing the frequencies by a decade or more complicates the digital processing considerably, since we need to sample at sufficiently high rates and accuracy (four times the 2f frequency, as we will see in chapter <a href="{{< ref "digital_control_processing.md#chapter-5.1" >}}">5.1</a>).
@@ -284,12 +248,7 @@ f\_\text{T} &= \dfrac{R\_2}{4 R\_1 R\_3 C\_\text{I}} \tag{3.10}
 $$
 </div>
 
-<figure id="figure-3.14">
-<img alt="laser_driver:triangle_generator_circuit" src="/images/triangle_generator_circuit.svg">
-<figcaption>
-Figure 3.14: Triangle wave generator [<a href="{{< relref "#citation6" >}}">6</a>].
-</figcaption>
-![](){#fig:}
+![Triangle wave generator [<a href="{{< relref "#citation6" >}}">6</a>].](/images/triangle_generator_circuit.svg){#fig:laser_driver:triangle_generator_circuit}
 
 Similar techniques exist for sine-wave generation [<a href="{{< relref "#citation7" >}}">7</a>]. While attractive in theory, these techniques are not practical. The oscillation frequency will change due to component and temperature variation and non-idealities; and drift of the amplifiers. This is undesirable for good lock-in behaviour since the signal should be phase locked to the digital reference. Averaging over longer time periods is also more difficult. The generated frequency will never be exactly 10Hz and even drift slightly.
 
@@ -299,14 +258,9 @@ An alternative for analogue generation is digital generation. A quantised approx
 
 We will assume a simple MATLAB model to determine the effect of quantised inputs on the resulting concentration measurements. To this end, we suppose the system depicted in figure <a href="{{< ref "laser_driver.md#figure-3.7" >}}">3.7</a>. The detector is assumed to be ideal (i.e. no noise, non-linearity and quantisation). The component of interest is the DAC. It is assumed that the DAC directly drives the laser since the voltage-to-current converter is only a conversion step that can be left out in simulation. Using these simulations, we can get an idea of the number of bits required. At this stage, we cannot yet assess the noise generated by the circuit, so we will not model this here.
 
-<figure id="figure-3.7">
-<img alt="laser_driver:digital_filtering_simulation" src="/images/digital_filtering_simulation.svg">
-<figcaption>
-Figure 3.7: Overview of simulation components to compare different signal generation techniques.
-</figcaption>
-![](){#fig:}
+![Overview of simulation components to compare different signal generation techniques.](/images/digital_filtering_simulation.svg){#fig:laser_driver:digital_filtering_simulation}
 
-Now, we will look at triangle and sine wave generation using a combination of an ideal and infinitely fast DAC and low-pass filter. 
+Now, we will look at triangle and sine wave generation using a combination of an ideal and infinitely fast DAC and low-pass filter.
 
 ### Triangle Wave
 
@@ -314,19 +268,9 @@ A 10Hz filtered triangle wave is depicted in figure <a href="{{< ref "laser_driv
 
 One of the harmonics from the triangle wave, whose spectrum is depicted in figure <a href="{{< ref "laser_driver.md#figure-3.21" >}}">3.21</a>, might fall on the second order harmonic. This is not really a problem since its amplitude is sufficiently low, as indicated by the spectrum.
 
-<figure id="figure-3.22">
-<img alt="laser_drivier:digital_triangle_time" src="/images/digital_triangle_time.svg">
-<figcaption>
-Figure 3.22: Quantised triangle signal, with and without filtering (using a second order Bessel and Butterworth filter). Filtering using a Bessel filter achieves higher signal to noise ratio (27.55dB compared to 22.97dB after delay compensation.
-</figcaption>
-![](){#fig:}
+![Quantised triangle signal, with and without filtering (using a second order Bessel and Butterworth filter). Filtering using a Bessel filter achieves higher signal to noise ratio (27.55dB compared to 22.97dB after delay compensation.](/images/digital_triangle_time.svg){#fig:laser_drivier:digital_triangle_time}
 
-<figure id="figure-3.21">
-<img alt="laser_drivier:digital_triangle_spectrum" src="/images/digital_triangle_spectrum.svg">
-<figcaption>
-Figure 3.21: Spectrum of different sine signals from figure <a href="{{< ref "laser_driver.md#figure-3.22" >}}">3.22</a>.
-</figcaption>
-![](){#fig:}
+![Spectrum of different sine signals from figure <a href="{{< ref "laser_driver.md#figure-3.22" >}}">3.22</a>.](/images/digital_triangle_spectrum.svg){#fig:laser_drivier:digital_triangle_spectrum}
 
 ### Sine Wave
 
@@ -334,19 +278,9 @@ Generating a sine wave should be easier to generate than a triangular wave, beca
 
 An interesting feature that can be observed from figure <a href="{{< ref "laser_driver.md#figure-3.19" >}}">3.19</a> is that, there is no second order component present.
 
-<figure id="figure-3.20">
-<img alt="laser_drivier:digital_sine_time" src="/images/digital_sine_time.svg">
-<figcaption>
-Figure 3.20: Ideal and quantised sine signal with and without filtering (using 2nd order Butterworth filter). The SNR between the ideal signal and the filtered signal is approximately 28dB (after delay correction).
-</figcaption>
-![](){#fig:}
+![Ideal and quantised sine signal with and without filtering (using 2nd order Butterworth filter). The SNR between the ideal signal and the filtered signal is approximately 28dB (after delay correction).](/images/digital_sine_time.svg){#fig:laser_drivier:digital_sine_time}
 
-<figure id="figure-3.19">
-<img alt="laser_drivier:digital_sine_spectrum" src="/images/digital_sine_spectrum.svg">
-<figcaption>
-Figure 3.19: Spectrum of different sine signals from figure <a href="{{< ref "laser_driver.md#figure-3.20" >}}">3.20</a>. Notice that there is no second order harmonic present.
-</figcaption>
-![](){#fig:}
+![Spectrum of different sine signals from figure <a href="{{< ref "laser_driver.md#figure-3.20" >}}">3.20</a>. Notice that there is no second order harmonic present.](/images/digital_sine_spectrum.svg){#fig:laser_drivier:digital_sine_spectrum}
 
 ## Digital Generation without Filtering
 
@@ -354,11 +288,11 @@ The non-filtered digital counterparts of the previous section are also depicted 
 
 The main advantage of digital generation over analogue generation is synchronisation. In case of digital generation, we are sure the input signal's amplitude or frequency are perfectly synchronised with the measurements of the LIA. This is not the case for analogue signals. A feedback system can compensate for drift in analogue implementations and digital filtered implementations at the cost of a higher complexity.
 
-Additionally, analogue generation techniques suffer from drift due to ageing, temperature and other external influences. These can change the frequencies (and amplitudes) at which the circuits operate. This can possibly also result into problems for proper lock-in operation and long-time averaging. 
+Additionally, analogue generation techniques suffer from drift due to ageing, temperature and other external influences. These can change the frequencies (and amplitudes) at which the circuits operate. This can possibly also result into problems for proper lock-in operation and long-time averaging.
 
 ## Driver Signals
 
-In the previous part, generation techniques were investigated, now we will select on of these for each of our three signals: bias, triangle and sine waves. Each has different requirements, as discussed next. 
+In the previous part, generation techniques were investigated, now we will select on of these for each of our three signals: bias, triangle and sine waves. Each has different requirements, as discussed next.
 
 ### Bias
 
@@ -370,19 +304,9 @@ The triangle signal will enable scanning over the absorption line. Accurate sett
 
 From figure <a href="{{< ref "laser_driver.md#figure-3.15" >}}">3.15</a> it is clear that we can omit complex filtering without seriously disturbing the signal. As a consequence, we will not use a second order Bessel filter in the setup, but use direct digital generation without filtering. According to simulation results, 3bits should suffice to obtain good results. In this first design however, we will employ 6bits in the actual generation. Later, the number of bits can easily be reduced without requiring redesign or fabrication of a new prototype.
 
-<figure id="figure-3.15">
-<img alt="laser_driver:triangle_type_influence_R" src="/images/triangle_type_influence_R.svg">
-<figcaption>
-Figure 3.15: Ratio $R=2f/1f$ of first and second order harmonic signals after background subtraction using ideal input, 3bit quantised triangle signal with (q+f) and without filtering (q).
-</figcaption>
-![](){#fig:}
+![Ratio $R=2f/1f$ of first and second order harmonic signals after background subtraction using ideal input, 3bit quantised triangle signal with (q+f) and without filtering (q).](/images/triangle_type_influence_R.svg){#fig:laser_driver:triangle_type_influence_R}
 
-<figure id="figure-3.13">
-<img alt="laser_driver:sine_type_influence_R" src="/images/sine_type_influence_R.svg">
-<figcaption>
-Figure 3.13: Ratio $R=2f/1f$ of first and second order harmonic signals after background subtraction using quantised triangle input without filtering, 3bit quantised sine signal with (q+f) and without filtering (q).
-</figcaption>
-![](){#fig:}
+![Ratio $R=2f/1f$ of first and second order harmonic signals after background subtraction using quantised triangle input without filtering, 3bit quantised sine signal with (q+f) and without filtering (q).](/images/sine_type_influence_R.svg){#fig:laser_driver:sine_type_influence_R}
 
 ### Sine Signal
 
@@ -392,19 +316,9 @@ The sine signal has similar requirements as the triangle signal, but synchronisa
 
 The digital waveform needs to be converted to an analogue signal. This is done using a DAC. A typical $R$-$2R$ DAC circuit is depicted in figure <a href="{{< ref "laser_driver.md#figure-3.3" >}}">3.3</a>. We will use two of these circuits to create a (quantised) sine and triangle signal. These will then be added using an analogue adder circuit, depicted in figure <a href="{{< ref "laser_driver.md#figure-3.6" >}}">3.6</a>, along with the bias value.
 
-<figure id="figure-3.3">
-<img alt="laser_driver:R-2R_ladder_DAC" src="/images/R-2R_ladder_DAC.svg">
-<figcaption>
-Figure 3.3: $R$-$2R$ ladder DAC
-</figcaption>
-![](){#fig:}
+![$R$-$2R$ ladder DAC](/images/R-2R_ladder_DAC.svg){#fig:laser_driver:R-2R_ladder_DAC}
 
-<figure id="figure-3.6">
-<img alt="laser_driver:analogue_adder_DAC" src="/images/analogue_adder_DAC.svg">
-<figcaption>
-Figure 3.6: Analogue adder circuit. Combines bias, triangle and sine voltage signals into a single signal.
-</figcaption>
-![](){#fig:}
+![Analogue adder circuit. Combines bias, triangle and sine voltage signals into a single signal.](/images/analogue_adder_DAC.svg){#fig:laser_driver:analogue_adder_DAC}
 
 ## Circuit Analysis
 
@@ -476,27 +390,17 @@ We selected the LTC1152 as amplifier for the designs in  figure <a href="{{< ref
 
 The gain of the DAC circuit is depicted in figure <a href="{{< ref "laser_driver.md#figure-3.9" >}}">3.9</a> and features a phase margin of 66.5°. The gain of the adder circuit is depicted in figure <a href="{{< ref "laser_driver.md#figure-3.11" >}}">3.11</a> and features a phase margin of 78.6°, both are above the recommended minimal phase margin of 60°. Both circuits utilise a compensation capacitor of 47pF, the phase margin can increased further if this compensation capacitor is increased as well. A value of 47pF should suffice for the applications considered here.
 
-<figure id="figure-3.9">
-<img alt="laser_driver:gain_DAC" src="/images/gain_DAC.svg">
-<figcaption>
-Figure 3.9: Gain plot of the most and least significant bits (MSB and LSB resp.) of a DAC circuit block to its output stage.
-</figcaption>
-![](){#fig:}
+![Gain plot of the most and least significant bits (MSB and LSB resp.) of a DAC circuit block to its output stage.](/images/gain_DAC.svg){#fig:laser_driver:gain_DAC}
 
-<figure id="figure-3.11">
-<img alt="laser_driver:gain_adder" src="/images/gain_adder.svg">
-<figcaption>
-Figure 3.11: Gain plot of the sine and triangle inputs of the analogue adder circuit to its output stage for the CO~2~ DFB laser.
-</figcaption>
-![](){#fig:}
+![Gain plot of the sine and triangle inputs of the analogue adder circuit to its output stage for the CO~2~ DFB laser.](/images/gain_adder.svg){#fig:laser_driver:gain_adder}
 
 The simulations indicate that the bandwidth of the DAC circuits is 549kHz. The rise and fall times (10% to 90% of the final value) are 0.6586μs and 0.6584μs respectively. The bandwidth of the analogue adder circuit is 204kHz.
 
-<h2 id="section-3.5">Voltage Controlled Current Source# 
+# Voltage Controlled Current Source
 
 Lasers are driven using a current signal. The voltage controlled current source will convert the output voltage signal of the DAC to a current signal and drive the laser. The selected driver is depicted in figure <a href="{{< ref "laser_driver.md#figure-3.16" >}}">3.16</a> and was selected for its linearity and simplicity. 
 
-<h3>Circuit Analysis</h3>
+## Circuit Analysis
 
 The operating principle of the circuit in figure <a href="{{< ref "laser_driver.md#figure-3.16" >}}">3.16</a> is simple: the amplifier drives the base voltage of the pMOS transistor such that the same voltage appears at the minus clamp of the amplifier, and thus also at the lower clamp of $R\_\text{c}$. This generates a current $i$ that flows through the transistor and subsequently the laser (the base current of the transistor is negligible). The transistor should be rated such that it can provide the necessary (variable) voltage drop and current. The main disadvantage of this circuit is power dissipation by the resistor. This problem cannot be alleviated by means of a linear circuit. Non-linear circuits exist that offer better efficiency, but harmonics of the input signal can appear in this case. As a result, these are not a good option for our driver, where linearity is fundamental.
 
@@ -511,12 +415,7 @@ i\_\text{laser} = \dfrac{V\_\text{CC} - v\_\text{in}}{R\_\text{c}}
 $$
 </div>
 
-<figure id="figure-3.16">
-<img alt="laser_driver:voltage_to_current" src="/images/voltage_to_current.svg">
-<figcaption>
-Figure 3.16: Voltage controlled current source, linearly transforms voltage signal into current signal to drive laser.
-</figcaption>
-![](){#fig:}
+![Voltage controlled current source, linearly transforms voltage signal into current signal to drive laser.](/images/voltage_to_current.svg){#fig:laser_driver:voltage_to_current}
 
 The amount of power dissipated is (neglecting the power dissipated by the amplifier):
 \begin{alignat}{3}
@@ -525,7 +424,7 @@ P_\text{total} &= P_\text{resistor} & + & P_\text{transistor} \\
 \br{V_\text{CC} - v_\text{in}} I_\text{D}
 \end{alignat}
 
-The resistors we are going to use, are rated with a maximum power dissipation of 0.25W. For the DFB lasers, we will put several in parallel to lower the power dissipation per resistor. The values of $R\_\text{c}$ and the expected maximum power dissipation are listed in table <a href="{{< ref "laser_driver.md#table-3.1" >}}">3.1</a>. 
+The resistors we are going to use, are rated with a maximum power dissipation of 0.25W. For the DFB lasers, we will put several in parallel to lower the power dissipation per resistor. The values of $R\_\text{c}$ and the expected maximum power dissipation are listed in table <a href="{{< ref "laser_driver.md#table-3.1" >}}">3.1</a>.
 
 <table id="table-3.1">
 <caption>Table 3.1: Resistor combinations for voltage-driven-current source and power dissipation.</caption>
@@ -561,12 +460,7 @@ The selected components are: PMF170XP for the transistor and LTC1152 for the amp
 
 The circuit has sufficient stability when a bandwidth limiting capacitor is used of 47pF. A minimum phase margin of 68° is achieved while providing sufficient bandwidth for the signals of interest. A voltage-to-current gain plot is depicted in figure <a href="{{< ref "laser_driver.md#figure-3.10" >}}">3.10</a> for the CO~2~ DFB laser. As expected, the gain is $-28.13dBS = -20\log{R\_\text{c}}$. The bandwidth of this circuit is 533kHz.
 
-<figure id="figure-3.10">
-<img alt="laser_driver:gain_VI_converter" src="/images/gain_VI_converter.svg">
-<figcaption>
-Figure 3.10: Voltage to current gain plot for CO~2~ DFB laser circuit
-</figcaption>
-![](){#fig:}
+![Voltage to current gain plot for CO~2~ DFB laser circuit.](/images/gain_VI_converter.svg){#fig:laser_driver:gain_VI_converter}
 
 # Conclusion
 
@@ -574,9 +468,4 @@ In this chapter, we investigated laser characteristics and absorption features (
 
 To conclude, we depict the overall transfer function from the digital input stage to the analogue current output that is fed into the laser in figure <a href="{{< ref "laser_driver.md#figure-3.8" >}}">3.8</a>. As expected, the gain is fairly low and consists of the following contributions for the most significant bit: (-6dB from digital input to output of the DAC buffer amplifier, an additional -16.5dB at the adder output, and finally -28.1dBS for the voltage to current conversion, resulting in -50.6dBS). The bandwidth of this transfer function is 185kHz.
 
-<figure id="figure-3.8">
-<img alt="laser_driver:full_transfer_function" src="/images/full_transfer_function.svg">
-<figcaption>
-Figure 3.8: Gain from digital most and least significant bits of the triangle wave to the analogue output of the laser driver.
-</figcaption>
-![](){#fig:}
+![Gain from digital most and least significant bits of the triangle wave to the analogue output of the laser driver.](/images/full_transfer_function.svg){#fig:laser_driver:full_transfer_function}

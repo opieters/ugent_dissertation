@@ -17,7 +17,7 @@ In this chapter, we discuss the set of specifications that the system should mee
 
 Before starting the design, a set of specifications is needed. These are mentioned in this section. We will start with the measurement related specifications, followed by the electrical ones. There are no real optical specifications, since the optical components (laser and photodiode) are fixed beforehand. 
 
-The system should have sufficient accuracy such that it can measure ambient levels of CO~2</sub> and dangerous levels if CO. Ambient CO~2</sub> levels are around 410ppm [<a href="{{< relref "#citation1" >}}">1</a>] and the maximum allowed daily dose of CO is in the range of 35 to 200ppm continuous exposure per day [<a href="{{< relref "#citation2" >}}">2</a>]. As a consequence, we require that the system is able the measure concentrations with an uncertainty of up to \pm 10ppm.
+The system should have sufficient accuracy such that it can measure ambient levels of CO~2~ and dangerous levels if CO. Ambient CO~2~ levels are around 410ppm [<a href="{{< relref "#citation1" >}}">1</a>] and the maximum allowed daily dose of CO is in the range of 35 to 200ppm continuous exposure per day [<a href="{{< relref "#citation2" >}}">2</a>]. As a consequence, we require that the system is able the measure concentrations with an uncertainty of up to \pm 10ppm.
 
 These measurements should be performed in real-time, though a single measurement need not have an accuracy of \pm 10ppm, a combination of them should. Measurements can be combined by averaging them to decrease the noise. Since measurements are assumed to be performed in real-time, we require that \pm 10ppm accurate measurements are performed within 1s. 
 

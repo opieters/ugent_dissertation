@@ -46,12 +46,7 @@ In contrast to other works (e.g. [<a href="{{< relref "#citation1" >}}">1</a>]),
 
 We will perform the concentration extraction in three phases as depicted in figure <a href="{{< ref "digital_control_processing.md#figure-5.16" >}}">5.16</a>. First, data acquisition is performed from the microcontroller. Second, this data is averaged to minimise noise. Furthermore, background subtraction is also performed to improve fitting performance. Third, and finally, the measurement data is fitted to a model of the extracted signals.
 
-<figure id="figure-5.16">
-<img alt="detector:WMS_framework" src="/images/WMS_framework.svg">
-<figcaption>
-Figure 5.16: Steps followed in computer to extract concentration.
-</figcaption>
-![](){#fig:}
+![Steps followed in computer to extract concentration.](/images/WMS_framework.svg){#fig:detector:WMS_framework}
 
 In the remainder of this chapter, we will focus on the individual aspects of the microcontroller code (section <a href="{{< ref "digital_control_processing.md#section-5.1" >}}">5.1</a> and section <a href="{{< ref "digital_control_processing.md#section-5.4" >}}">5.4</a>) and computer code (section <a href="{{< ref "digital_control_processing.md#section-5.2" >}}">5.2</a>) that make concentration extraction possible according to figure <a href="{{< ref "digital_control_processing.md#figure-5.16" >}}">5.16</a>. We will start with the microcontroller code, followed by the computer code. 
 
@@ -83,27 +78,13 @@ Furthermore, dynamic reserve is limited in analogue systems (up to 60dB), while 
 
 However, the frequency at which this noise appears is important, noise at the frequency of the signal of interest or nearby will not be removed due to filtering. The actual dynamic reserve level consequently can have a shape like the one in figure <a href="{{< ref "digital_control_processing.md#figure-5.12" >}}">5.12</a> [<a href="{{< relref "#citation4" >}}">4</a>]. Noise that appears near or on the signal frequency $f\_\text{ref}$ will not be removed and results in an offset or incorrect gain. Measurement accuracy will thus be limited by this noise. 
 
-<figure id="figure-5.12">
-<img alt="DCP:dynamic_reserve" src="/images/dynamic_reserve.svg">
-<figcaption>
-Figure 5.12: Typical frequency dynamic reserve of a digital LIA.
-</figcaption>
-![](){#fig:}
+![Typical frequency dynamic reserve of a digital LIA.](/images/dynamic_reserve.svg){#fig:DCP:dynamic_reserve}
 
 ## Typical Digital LIA Architecture
 
 A typical LIA architecture is depicted in figure <a href="{{< ref "digital_control_processing.md#figure-5.3" >}}">5.3</a>. We can readily recognise part of the architecture we discussed in figure <a href="{{< ref "system.md#figure-2.2" >}}">2.2</a>. Similarly, the signal generation is done using a DAC, since this is the most effective way to create a phase-locked input signal for the analogue measurement system. The resulting signal is sampled using an ADC on phase-locked timestamps. The DAC and ADC can be internal (microcontroller IO-pins) or external components. External components are usually interfaced with the microcontroller using protocols such as SPI and I2C [<a href="{{< relref "#citation5" >}}">5</a>].
 
-
-
-<figure id="figure-5.3">
-<img alt="DCP:Digital_LIA_Concept" src="/images/Digital_LIA_Concept.svg">
-<figcaption>
-Figure 5.3: Conceptual LIA implementation using digital microcontroller.
-</figcaption>
-![](){#fig:}
-
-
+![Conceptual LIA implementation using digital microcontroller.](/images/Digital_LIA_Concept.svg){#fig:DCP:Digital_LIA_Concept}
 
 The mixers (multipliers) of the LIA use LUT. A LUT is a table of precomputed values that are fixed in program memory. Precomputing these $I$/$Q$ values is much more time-efficient than computing the correct values for every sample. These LUT are also quite small. This will be discussed in further detail in subsection <a href="{{< ref "digital_control_processing.md#subsection-5.3" >}}">5.3</a>.
 
@@ -176,26 +157,11 @@ $$
 
 Where $a\_i(t)$ is proportional to the first and second derivatives of the absorption profile. These derivatives along with the absorption line are depicted in figure <a href="{{< ref "digital_control_processing.md#figure-5.15" >}}">5.15</a>. Zeros at the centre frequencies (0Hz in figure <a href="{{< ref "digital_control_processing.md#figure-5.1" >}}">5.1</a> and figure <a href="{{< ref "digital_control_processing.md#figure-5.2" >}}">5.2</a>) occur because the integral of the time domain plots is zero (right plots in figure <a href="{{< ref "digital_control_processing.md#figure-5.15" >}}">5.15</a>). There is an equal amount of area under the curve that is positive and negative. The small amplitude variations that can be observed in the tails of figure <a href="{{< ref "digital_control_processing.md#figure-5.1" >}}">5.1</a> are due to limiting the integration in equation <a href="{{< ref "digital_control_processing.md#equation-5.1" >}}">5.1</a> to finite frequency and wavelength intervals.
 
-<figure id="figure-5.1">
-<img alt="DCP:1f_spectrum" src="/images/1f_spectrum.svg">
-<figcaption>
-Figure 5.1: Normalised Fourier transform of first order sine harmonic due to wavelength scan over selected CO~2~ absorption line at 2003.5nm ($\mathcal{F}[x\_1](f)$).
-</figcaption>
-![](){#fig:}
+![Normalised Fourier transform of first order sine harmonic due to wavelength scan over selected CO~2~ absorption line at 2003.5nm ($\mathcal{F}[x\_1](f)$).](/images/1f_spectrum.svg){#fig:DCP:1f_spectrum}
 
-<figure id="figure-5.2">
-<img alt="DCP:2f_spectrum" src="/images/2f_spectrum.svg">
-<figcaption>
-Figure 5.2: Normalised Fourier transform of second order sine harmonic due to wavelength scan over selected CO~2~ absorption line at 2003.5nm ($\mathcal{F}[x\_2](f)$).
-</figcaption>
-![](){#fig:}
+![Normalised Fourier transform of second order sine harmonic due to wavelength scan over selected CO~2~ absorption line at 2003.5nm ($\mathcal{F}[x\_2](f)$).](/images/2f_spectrum.svg){#fig:DCP:2f_spectrum}
 
-<figure id="figure-5.15">
-<img alt="DCP:time_absorption_1f_2f" src="/images/time_absorption_1f_2f.svg">
-<figcaption>
-Figure 5.15: Time domain plots of a simulated scan over the CO~2~ absorption peak at 2003.5nm (left), first order sine harmonic $x\_1(t)$ (upper right) and second order sine harmonic $x\_2(t)$ (lower right).
-</figcaption>
-![](){#fig:}
+![Time domain plots of a simulated scan over the CO~2~ absorption peak at 2003.5nm (left), first order sine harmonic $x\_1(t)$ (upper right) and second order sine harmonic $x\_2(t)$ (lower right).](/images/time_absorption_1f_2f.svg){#fig:DCP:time_absorption_1f_2f}
 
 From figure <a href="{{< ref "digital_control_processing.md#figure-5.15" >}}">5.15</a> we can also observe that it is not needed to scan over the maximum wavelength ranges we put up front in table <a href="{{< ref "laser_driver.md#table-3.3" >}}">3.3</a>, especially for the CO DFB laser. Since most of the 1f and 2f variation is within an interval of 0.5nm of the absorption line (the laser scans over a wavelength interval of 0.53nm from 0 to $T$ in figure <a href="{{< ref "digital_control_processing.md#figure-5.15" >}}">5.15</a>). A larger wavelength variation means that the 1f and 2f variation due to the absorption peak will happen faster, resulting in a larger bandwidth and less resolution due to increased noise. As a result, it makes sense to limit the wavelength variation.
 
@@ -214,10 +180,9 @@ $$
 $$
 </div>
 
-
 ## LIA Operation and Filter Design
 
-In this section, we will design a set of digital filters to decimate and extract the frequencies of interest. Since we designed the system to operate using a triangle wave of 10Hz, the ramp will scan over the absorption line at 20Hz, resulting in a period of 50ms and the Fourier transforms from figure <a href="{{< ref "digital_control_processing.md#figure-5.1" >}}">5.1</a> and figure <a href="{{< ref "digital_control_processing.md#figure-5.2" >}}">5.2</a>. We will also discuss the microcontroller LIA mixing routines in this subsection. 
+In this section, we will design a set of digital filters to decimate and extract the frequencies of interest. Since we designed the system to operate using a triangle wave of 10Hz, the ramp will scan over the absorption line at 20Hz, resulting in a period of 50ms and the Fourier transforms from figure <a href="{{< ref "digital_control_processing.md#figure-5.1" >}}">5.1</a> and figure <a href="{{< ref "digital_control_processing.md#figure-5.2" >}}">5.2</a>. We will also discuss the microcontroller LIA mixing routines in this subsection.
 
 ### LIA Mixing Operation
 
@@ -229,30 +194,15 @@ For the 1f signal, we cannot apply this technique directly. One possibility is t
 
 Two routines have been written in assembly to perform these mixing operations very efficiently using the DSP instructions on the microcontroller. The code itself can be found in chapter <a href="{{< ref "microcontroller_code.md#chapter-A2.1" >}}">A2.1</a>. The routine for the 2f component is simple, since there is no need to perform fixed point multiplications. However, this is required for the 1f component at the four blue points in the constellation from figure <a href="{{< ref "digital_control_processing.md#figure-5.9" >}}">5.9</a>.
 
-<figure id="figure-5.10">
-<img alt="DCP:constellation_2f" src="/images/constellation_2f.svg">
-<figcaption>
-Figure 5.10: Constellation of LIA mixing points for 2f LIA.
-</figcaption>
-![](){#fig:}
+![Constellation of LIA mixing points for 2f LIA.](/images/constellation_2f.svg){#fig:DCP:constellation_2f}
 
-<figure id="figure-5.9">
-<img alt="DCP:constellation_1f" src="/images/constellation_1f.svg">
-<figcaption>
-Figure 5.9: Constellation of LIA mixing points for 1f LIA.
-</figcaption>
-![](){#fig:}
+![Constellation of LIA mixing points for 1f LIA.](/images/constellation_1f.svg){#fig:DCP:constellation_1f}
 
 ### Filtering After LIA Multiplication
 
 Since the frequency bands have infinate tails, we will set the filter bandwidth such that 95% of the signal is passed by the filter. This is a trade-off between filter width and noise rejection. Using this rule, we obtain bandwidths of 392Hz and 518Hz for the 1f and 2f components respectively for the VCSEL. The bandwidth definition used here, is illustrated in figure <a href="{{< ref "digital_control_processing.md#figure-5.8" >}}">5.8</a>. Table <a href="{{< ref "digital_control_processing.md#table-5.1" >}}">5.1</a> provides a summary of the bandwidths for all three lasers when using the maximum wavelength difference from table <a href="{{< ref "laser_driver.md#table-3.3" >}}">3.3</a>.
 
-<figure id="figure-5.8">
-<img alt="DCP:bandwidth_illustration" src="/images/bandwidth_illustration.svg">
-<figcaption>
-Figure 5.8: Illustration of our bandwidth definition for the LIA.
-</figcaption>
-![](){#fig:}
+![Illustration of our bandwidth definition for the LIA.](/images/bandwidth_illustration.svg){#fig:DCP:bandwidth_illustration}
 
 <table id="table-5.1">
 <caption>Table 5.1: LIA bandwidth such that 95% of the energy is captured.</caption>
@@ -280,30 +230,15 @@ A graphical depiction of the transfer function of all four filters for the 1f an
 
 These filters are digital equiripple filters with a passband ripple of 0.04dB for the first filter and 0.02dB for the other three filters. These filters should have sufficient attenuation (at least 60dB) to attenuate noise and other components (such as the 1f signal in the 2f LIA). The filters were designed to have 70dB of attenuation to make sure we have at least 60dB attenuation for the fixed point filters.
 
-<figure id="figure-5.5">
-<img alt="DCP:LIA_1f_filters_TF" src="/images/LIA_1f_filters_TF.svg">
-<figcaption>
-Figure 5.5: Transfer functions of digital low-pass filters for first order harmonic LIA.
-</figcaption>
-![](){#fig:}
+![Transfer functions of digital low-pass filters for first order harmonic LIA.](/images/LIA_1f_filters_TF.svg){#fig:DCP:LIA_1f_filters_TF}
 
-<figure id="figure-5.6">
-<img alt="DCP:LIA_2f_filters_TF" src="/images/LIA_2f_filters_TF.svg">
-<figcaption>
-Figure 5.6: Transfer functions of digital low-pass filters for second order harmonic LIA.
-</figcaption>
-![](){#fig:}
+![Transfer functions of digital low-pass filters for second order harmonic LIA.](/images/LIA_2f_filters_TF.svg){#fig:DCP:LIA_2f_filters_TF}
 
 The decimation factor and filter relationships are summarised in figure <a href="{{< ref "digital_control_processing.md#figure-5.11" >}}">5.11</a> for both the 1f and 2f components. A slightly different scheme is needed for the CO DFB laser since the bandwidth of this laser is much larger. However, if the wavelength variation is limited, as discussed in a previous paragraph, a similar scheme can be applied. The bandwidths of the final filters can be different due to the different characteristics of the CO absorption line. 
 
 The first two filters in figure <a href="{{< ref "digital_control_processing.md#figure-5.5" >}}">5.5</a> and figure <a href="{{< ref "digital_control_processing.md#figure-5.6" >}}">5.6</a> have the same filtering coefficients for both signals. Do note that we do not decimate immediately after the 2f LIA to prevent aliasing from occurring even though half of the samples are zero due to the quadrature sampling.
 
-<figure id="figure-5.11">
-<img alt="DCP:decimation_filtering_scheme" src="/images/decimation_filtering_scheme.svg">
-<figcaption>
-Figure 5.11: Decimation and filtering scheme for 1f and 2f LIA.
-</figcaption>
-![](){#fig:}
+![Decimation and filtering scheme for 1f and 2f LIA.](/images/decimation_filtering_scheme.svg){#fig:DCP:decimation_filtering_scheme}
 
 # Signal Generation and LIA Interrupt Routines
 
@@ -321,19 +256,9 @@ After conversion by the ADC, the DMA reads the value over SPI. The DMA is a spec
 
 After performing all the IO, the values are updated for the next interrupt cycle and the interrupt is terminated. Since the interrupt is triggered at a rate of 320kHz, it needs to terminate as fast as possible to allow other interrupt routines to be handled without missing an interrupt.
 
-<figure id="figure-5.14">
-<img alt="DCP:signal_generation_interrupt" src="/images/signal_generation_interrupt.svg">
-<figcaption>
-Figure 5.14: Signal generation interrupt routine.
-</figcaption>
-![](){#fig:}
+![Signal generation interrupt routine.](/images/signal_generation_interrupt.svg){#fig:DCP:signal_generation_interrupt}
 
-<figure id="figure-5.7">
-<img alt="DCP:LIA_interrupt" src="/images/LIA_interrupt.svg">
-<figcaption>
-Figure 5.7: LIA processing and data transmit interrupt routine.
-</figcaption>
-![](){#fig:}
+![LIA processing and data transmit interrupt routine.](/images/LIA_interrupt.svg){#fig:DCP:LIA_interrupt}
 
 ## LIA Interrupt Routine
 
@@ -349,12 +274,7 @@ The transfer to the computer is also handled by the DMA. If the DMA is not busy 
 
 After the signal has passed from the laser driver, through the detector and the DSP, we can finally extract the concentration. This will be done offline using the simple procedure depicted in figure <a href="{{< ref "digital_control_processing.md#figure-5.13" >}}">5.13</a>.
 
-<figure id="figure-5.13">
-<img alt="DCP:fit_model_conc" src="/images/fit_model_conc.svg">
-<figcaption>
-Figure 5.13: Concentration extraction using the Levenberg-Marquardt algorithm from the measured data.
-</figcaption>
-![](){#fig:}
+![Concentration extraction using the Levenberg-Marquardt algorithm from the measured data.](/images/fit_model_conc.svg){#fig:DCP:fit_model_conc}
 
 The script first captures raw UART data from the microcontroller and stores this in a buffer. Once the buffer is full, the data can be averaged and fitted. The fitting algorithm not only needs to estimate the concentration, but also a set of meta-parameters that cannot be fixed. These paraters are the wavelength scanning range and a measurement sample offset (we will come back to this).
 
@@ -364,7 +284,7 @@ The other meta-parameter is an offset. This offset arises from the fact that the
 
 The concentration extraction itself is based on an accurate simulation of the entire opto-electrical circuit from figure <a href="{{< ref "system.md#figure-2.2" >}}">2.2</a>. This simulation creates the same $R\_{2/1}$ ratio that we can extract from the measurement data. By fitting the simulated $R\_{2/1}$ ratio to the measured one, we can extract the concentration, since this is an input parameter of the simulation.
 
-A simplified simulation version of all of the components from figure <a href="{{< ref "system.md#figure-2.2" >}}">2.2</a> has been written in Python. These are all linked together to form a \lstinline|FitComponent| object. This component's parameters will then be fitted to the UART data that is loaded from file.
+A simplified simulation version of all of the components from figure <a href="{{< ref "system.md#figure-2.2" >}}">2.2</a> has been written in Python. These are all linked together to form a `FitComponent` object. This component's parameters will then be fitted to the UART data that is loaded from file.
 
 ## Real Time Incoming Signal Inspection Using a GUI
 
@@ -372,12 +292,7 @@ It is currently not possible to estimate the concentration in real time, however
 
 This GUI depicts both the 1f (top plane) and 2f (bottom plane) components. The user can also change the averaging interval and offset such that the a measurement period starts at position 0. Additionally, the user can also _calibrate_ the system. This means that the current measurement data will be saved and subtracted from future data. Measurements can be performed relative to a certain reference value. This is similar to the background subtraction we discussed in section <a href="{{< ref "digital_control_processing.md#section-5.3" >}}">5.3</a> (equation <a href="{{< ref "digital_control_processing.md#equation-5.6" >}}">5.6</a>).
 
-<figure id="figure-5.4">
-<img alt="DCP:GUI" src="/images/GUI.svg">
-<figcaption>
-Figure 5.4: GUI for visual inspection of the incoming 1f (top plane) and 2f (bottom plane) components.
-</figcaption>
-![](){#fig:}
+![GUI for visual inspection of the incoming 1f (top plane) and 2f (bottom plane) components.](/images/GUI.svg){#fig:DCP:GUI}
 
 # Evaluating the Accuracy of the System
 
@@ -394,16 +309,3 @@ This ratio $R\_{2/1}$ relies heavily on the use of LIA. The structure and operat
 One of the most important aspects of proper LIA operation is a good phase lock between the driving signals and the sampling (and thus also the DSP operations). How we can achieve this phase lock is discussed in section <a href="{{< ref "digital_control_processing.md#section-5.4" >}}">5.4</a>. In the same section we also discuss how the LIA operation is implemented using a combination of low-pass filtering and decimation.
 
 In section <a href="{{< ref "digital_control_processing.md#section-5.2" >}}">5.2</a>, we discussed how we will process the incoming LIA data on a computer and perform the concentration extraction using an offline algorithm. Real-time inspection of the 1f and 2f data is possible using a simple GUI.
-
-<ul>
-<li id="citation1">[1]: G. B. Rieker, "Wavelength-modulation Spectroscopy for Measurements of Gas Temperature and Concentration in Harsh Environments", <em>Stanford University</em>, 2006.</li>
-<li id="citation2">[2]: K. Levenberg, "A Method for the Solution of Certain Non-Linear Problems in Least Squares", <em>Quarterly of Applied Mathematics</em>, vol. 2, no. 2, 1944.</li>
-<li id="citation3">[3]: G. B. Armen, "Phase sensitive detection: the lock-in amplifier", 2008.</li>
-<li id="citation4">[4]: "About Lock-In Amplifiers", <em>3</em>.</li>
-<li id="citation5">[5]: D. Wenn, "Implementing Digital Lock-In Amplifiers Using the dsPIC DSC", <em>AN1115</em>, 2007.</li>
-<li id="citation6">[6]: K. Duffin, A. J. McGettrick, W. Johnstone, G. Stewart and D. G. Moodie, "Tunable Diode-Laser Spectroscopy With Wavelength Modulation: A Calibration-Free Approach to the Recovery of Absolute Gas Absorption Line Shapes", <em>JOURNAL OF LIGHTWAVE TECHNOLOGY</em>, vol. 25, no. 10, 2007.</li>
-<li id="citation7">[7]: C. S. Goldenstein, C. L. Strand, I. A. Schultz, K. Sun, J. B. Jeffries and R. K. Hanson, "Fitting of calibration-free scanned-wavelength- modulation spectroscopy spectra for determination of gas properties and absorption lineshapes", <em>Applied Optics</em>, vol. 53, no. 3, 2014.</li>
-<li id="citation8">[8]: R. Engelbrecht, "A compact NIR fiber-optic diode laser spectrometer for CO and CO~2~: analysis of observed 2f wavelength modulation spectroscopy line shapes", <em>Spectrochimica Acta Part A Molecular and Biomolecular Spectroscopy</em>, vol. 60, no. 14, 2005.</li>
-<li id="citation9">[9]: "DFB Laser 2004nm", Datasheet, <em>Eblana Photonics</em>, Available: <a href='http://www.frlaserco.com/uploads/files/20160707164325_EP2004-DM-B.pdf'>http://www.frlaserco.com/uploads/files/20160707164325_EP2004-DM-B.pdf</a>.</li>
-<li id="citation10">[10]: R. Wang, S. Sprengel, A. Malik, A. Vasiliev, G. Boehm, R. Baets, M. Amann and G. Roelkens, "Heterogeneously integrated III--V-on-silicon 2.3x µm distributed feedback lasers based on a type-II active region", <em>Applied Physics Letters</em>, 2016.</li>
-</ul>

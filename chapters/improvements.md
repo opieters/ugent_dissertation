@@ -28,12 +28,7 @@ For correct operation, it is essential that the reference voltage remains fixed 
 
 Do note that the circuit depicted in figure <a href="{{< ref "improvements.md#figure-7.2" >}}">7.2</a> does not provide any means to alleviate aliasing. An active Sallen-Key low-pass filter can be added to attenuate frequencies well above the Nyquist frequency. An example circuit can be found in figure <a href="{{< ref "detector.md#figure-4.19" >}}">4.19</a>. However, it was not included in the this TEC design since we do not expect the system to have many interferes at high frequencies. 
 
-<figure id="figure-7.2">
-<img alt="improvements:TEC_sensing" src="/images/TEC_sensing.svg">
-<figcaption>
-Figure 7.2: Sensing circuit to measure thermistor resistance. A current source sends a constant current through the thermistor. The current that arises over this thermistor is digitised using a single-end ADC.
-</figcaption>
-![](){#fig:}
+![Sensing circuit to measure thermistor resistance. A current source sends a constant current through the thermistor. The current that arises over this thermistor is digitised using a single-end ADC.](/images/TEC_sensing.svg){#fig:improvements:TEC_sensing}
 
 Using the measured thermistor value from the circuit in figure <a href="{{< ref "improvements.md#figure-7.2" >}}">7.2</a>, a voltage source can be set to generate an input current that will either cool the laser down or heat it up. The current source again uses the same principle as the laser driver current source (figure <a href="{{< ref "improvements.md#figure-7.2" >}}">7.2</a>). However, the specifications of this circuit are different. 
 
@@ -43,12 +38,7 @@ Most lasers have good performance when they are below the ambient temperature (f
 
 The DAC should be able to have an output that equals the positive output rail voltage $V\_\text{CC}$. An example of such an DAC is the LTC1659 [<a href="{{< relref "#citation2" >}}">2</a>]. A custom built DAC, similar to the ones used in section <a href="{{< ref "laser_driver.md#section-3.1" >}}">3.1</a>, does not provide sufficient accuracy for this application with 1% resistor value.
 
-<figure id="figure-7.1">
-<img alt="improvements:TEC_current" src="/images/TEC_current.svg">
-<figcaption>
-Figure 7.1: TEC current source to cool down or heat up the laser to a fixed temperature.
-</figcaption>
-![](){#fig:}
+![TEC current source to cool down or heat up the laser to a fixed temperature.](/images/TEC_current.svg){#fig:improvements:TEC_current}
 
 The current source from figure <a href="{{< ref "improvements.md#figure-7.1" >}}">7.1</a> is a linear source, the output current is a linear function of the input voltage by setting a voltage over the resistor $R\_\text{c}$. Though the principle if the circuit in figure <a href="{{< ref "improvements.md#figure-7.1" >}}">7.1</a> is valid, it may not be practical. Suppose that we allow currents up to 1A and set $R\_\text{c}$ to 10Ω, then we have at most 10W dissipation by this resistor, which is not possible with normal resistors. Additionally, 10W of loss is a lot. A solution for this is a switched current supply. 
 
@@ -70,12 +60,7 @@ During phase C, the system validates the estimate from phase B. Both a direct ab
 
 During phase A, the system linearly scans the thermistor value in steps of $\epsilon\_R$ from its minimum value to the maximum value. If the system has found an absorption peak, it enters phase B again. If it cannot find such a peak if and the thermistor value reaches $R\_\text{max}$, the procedure fails. The system can also enter phase A from phase B if no dip is found; and will perform a similar operation. If the system enters phase A multiple times, it is not restarted (since that might result in livelock), but continues from the last thermistor value that was used during this phase.
 
-<figure id="figure-7.3">
-<img alt="improvements:calibration" src="/images/calibration.svg">
-<figcaption>
-Figure 7.3: Calibration algorithm to ensure that the absorption peak is well centred.
-</figcaption>
-![](){#fig:}
+![Calibration algorithm to ensure that the absorption peak is well centred.](/images/calibration.svg){#fig:improvements:calibration}
 
 # Improved Background Subtraction
 
@@ -85,7 +70,7 @@ This method has its drawbacks, since it assumes the system to be time-invariant,
 
 This can be improved by adding a second detector chain. This chain contains exactly the same components as the actual detector chain, but the light is not passed through the gas cell in this case, but directly falls onto a PD. This can be done by using a power splitter in the laser. The laser can for instance direct 5% of its output power to a PD that is integrated into this laser. The output current from this PD will then be processed by a duplicate of the detector chain through which the other 95% of the light passes.
 
-The above procedure creates several additional difficulties however: apart from the gain mismatch due to the power splitter and gas cell losses, the (electrical) gains should be the same. Furthermore, both receiver chains should ideally have exactly the same overall transfer function characteristic. To this end, a sensitivity analysis needs to be performed and components should have lower variability (e.g. 0.1% resistor values). 
+The above procedure creates several additional difficulties however: apart from the gain mismatch due to the power splitter and gas cell losses, the (electrical) gains should be the same. Furthermore, both receiver chains should ideally have exactly the same overall transfer function characteristic. To this end, a sensitivity analysis needs to be performed and components should have lower variability (e.g. 0.1% resistor values).
 
 A simpler technique is obtained by employing an optical switch that direct the light either to the gas cell or directly to a second PD. This alleviates the need for a second detector chain. The gain still needs to be calibrated (losses will be different), but this was also the case for the previous architecture, since both detector chains are not perfect not the power splitter. 
 
